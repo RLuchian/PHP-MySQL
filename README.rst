@@ -1,11 +1,10 @@
 CREATE DATABASE books; USE books;
 
-CREATE TABLE books (
-id int(11) NOT NULL auto_increment, BookName varchar(30) NOT NULL, AuthorName varchar(30) NOT NULL, Quantity int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE authors (
+ID int(11) NOT NULL , Name varchar(30) NOT NULL, BooksWritten int(11) NOT NULL, Image varchar(500) NOT NULL);
 
-INSERT INTO `books` (`ID`, `BookName`, `AuthorName`, `Quantity`) VALUES (NULL, "Call Of Cthulhi", "L. P. Lovecraft", 55),(NULL, "Sapiens", "Y. N. Harari", 55);
+INSERT INTO `books` (`ID`, `Name`, `BooksWritten`, `Quantity`) VALUES (1, "J. K. Rowlling", 23, "JKR.jpg"),(2, "G. R. R. Martin", 34, "GrrMartin.jpg");
+ALTER TABLE `authors` CHANGE `ID` INT(11) NOT NULL AUTO_INCREMENT;
+CREATE TABLE authors_updated (ID int(11) NOT NULL , Name varchar(30) NOT NULL, Status varchar(30) NOT NULL, EdTime datetime NOT NULL);
+ALTER TABLE `authors_updated` CHANGE `ID` INT(11) NOT NULL AUTO_INCREMENT;
 
-
-CREATE TABLE books_updates (
-id int(11) NOT NULL auto_increment, BookName varchar(30) NOT NULL, AuthorName varchar(30) NOT NULL, Status varchar(30) NOT NULL, EdTime DATE) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-COMMIT;
