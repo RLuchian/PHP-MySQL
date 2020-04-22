@@ -37,7 +37,7 @@
         $stmt2=$con->prepare($sql2);
         $stmt1->execute();
         $stmt2->execute();
-        $sqlTrigger="CREATE TRIGGER AITrigger AFTER UPDATE ON authors FOR EACH ROW
+        $sqlTrigger="CREATE TRIGGER AITrigger AFTER INSERT ON authors FOR EACH ROW
              BEGIN
              INSERT INTO authors_updated(Name,Status,EdTime) VALUES (NEW.Name,'CREATED',NOW());
              END;";
