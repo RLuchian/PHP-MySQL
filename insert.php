@@ -37,13 +37,12 @@
         $stmt2=$con->prepare($sql2);
         $stmt1->execute();
         $stmt2->execute();
-        $sqltrigger="CREATE TRIGGER AITrigger AFTER INSERT ON authors FOR EACH ROW
-                BEGIN
-                INSERT INTO authors_updated (ID, Name, Status,EdTime) 
-                VALUES (NULL, NEW.Name, 'CREATED',GETDATE());
-                END;";
-        $stmtt2 = $con->prepare($sqltrigger);
-        $stmtt2->execute();
+        $sqlTrigger="CREATE TRIGGER AITrigger AFTER UPDATE ON authors FOR EACH ROW
+             BEGIN
+             INSERT INTO authors_updated(Name,Status,EdTime) VALUES (NEW.Name,'CREATED',NOW());
+             END;";
+        $stmt=$con->prepare($sqlTrigger);
+        $stmt->execute();
         if(isset($_POST['add'])){
             $author = $_POST['name'];
             $books = $_POST['books'];
